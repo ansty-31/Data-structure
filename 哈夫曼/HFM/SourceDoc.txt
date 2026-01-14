@@ -1,0 +1,241 @@
+For example, eliminating x, y, and z from the equations
+a_1x+a_2y+a_3z	=	0	
+(1)
+b_1x+b_2y+b_3z	=	0	
+(2)
+c_1x+c_2y+c_3z	=	0	
+(3)
+
+gives the expression
+a_1b_2c_3-a_1b_3c_2+a_2b_3c_1-a_2b_1c_3+a_3b_1c_2-a_3b_2c_1=0, 	
+(4)
+
+which is called the determinant for this system of equation. Determinants are defined only for square matrices.
+
+If the determinant of a matrix is 0, the matrix is said to be singular, and if the determinant is 1, the matrix is said to be unimodular.
+
+The determinant of a matrix A,
+|a_1 a_2 ... a_n; b_1 b_2 ... b_n; | | ... |; z_1 z_2 ... z_n| 	
+(5)
+
+is commonly denoted det(A), |A|, or in component notation as sum(+/-a_1b_2c_3...), D(a_1b_2c_3...), or |a_1b_2c_3...| (Muir 1960, p. 17). Note that the notation det(A) may be more convenient when indicating the absolute value of a determinant, i.e., |det(A)| instead of ||A||. The determinant is implemented in the Wolfram Language as Det[m].
+
+A 2×2 determinant is defined to be
+det[a b; c d]=|a b; c d|=ad-bc. 	
+(6)
+
+A k×k determinant can be expanded "by minors" to obtain
+|a_(11) a_(12) a_(13) ... a_(1k); a_(21) a_(22) a_(23) ... a_(2k); | | | ... |; a_(k1) a_(k2) a_(k3) ... a_(kk)|=a_(11)|a_(22) a_(23) ... a_(2k); | | ... |; a_(k2) a_(k3) ... a_(kk)| -a_(12)|a_(21) a_(23) ... a_(2k); | | ... |; a_(k1) a_(k3) ... a_(kk)|+...+/-a_(1k)|a_(21) a_(22) ... a_(2(k-1)); | | ... |; a_(k1) a_(k2) ... a_(k(k-1))|. 	
+(7)
+
+A general determinant for a matrix A has a value
+|A|=sum_(i=1)^ka_(ij)C_(ij), 	
+(8)
+
+with no implied summation over j and where C_(ij) (also denoted a^(ij)) is the cofactor of a_(ij) defined by
+C_(ij)=(-1)^(i+j)M_(ij). 	
+(9)
+
+and M_(ij) is the minor of matrix A formed by eliminating row i and column j from A. This process is called determinant expansion by minors (or "Laplacian expansion by minors," sometimes further shortened to simply "Laplacian expansion").
+
+A determinant can also be computed by writing down all permutations of {1,...,n}, taking each permutation as the subscripts of the letters a, b, ..., and summing with signs determined by epsilon_p=(-1)^(i(p)), where i(p) is the number of permutation inversions in permutation p (Muir 1960, p. 16), and epsilon_(n_1n_2...) is the permutation symbol. For example, with n=3, the permutations and the number of inversions they contain are 123 (0), 132 (1), 213 (1), 231 (2), 312 (2), and 321 (3), so the determinant is given by
+|a_1 a_2 a_3; b_1 b_2 b_3; c_1 c_2 c_3| =a_1b_2c_3-a_1b_3c_2-a_2b_1c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1. 	
+(10)
+
+If a is a constant and A an n×n square matrix, then
+|aA|=a^n|A|. 	
+(11)
+
+Given an n×n determinant, the additive inverse is
+|-A|=(-1)^n|A|. 	
+(12)
+
+Determinants are also distributive, so
+|AB|=|A||B|. 	
+(13)
+
+This means that the determinant of a matrix inverse can be found as follows:
+|I|=|AA^(-1)|=|A||A^(-1)|=1, 	
+(14)
+
+where I is the identity matrix, so
+|A|=1/(|A^(-1)|). 	
+(15)
+
+Determinants are multilinear in rows and columns, since
+|a_1 a_2 a_3; a_4 a_5 a_6; a_7 a_8 a_9|=|a_1 0 0; a_4 a_5 a_6; a_7 a_8 a_9|+|0 a_2 0; a_4 a_5 a_6; a_7 a_8 a_9|+|0 0 a_3; a_4 a_5 a_6; a_7 a_8 a_9| 	
+(16)
+
+and
+|a_1 a_2 a_3; a_4 a_5 a_6; a_7 a_8 a_9|=|a_1 a_2 a_3; 0 a_5 a_6; 0 a_8 a_9|+|0 a_2 a_3; a_4 a_5 a_6; 0 a_8 a_9|+|0 a_2 a_3; 0 a_5 a_6; a_7 a_8 a_9|. 	
+(17)
+
+The determinant of the similarity transformation of a matrix is equal to the determinant of the original matrix
+|BAB^(-1)|	=	|B||A||B^(-1)|	
+(18)
+	=	|B||A|1/(|B|)	
+(19)
+	=	|A|.	
+(20)
+
+The determinant of a similarity transformation minus a multiple of the unit matrix is given by
+|B^(-1)AB-lambdaI|	=	|B^(-1)AB-B^(-1)lambdaIB|	
+(21)
+	=	|B^(-1)(A-lambdaI)B|	
+(22)
+	=	|B^(-1)||A-lambdaI||B|	
+(23)
+	=	|A-lambdaI|.	
+(24)
+
+The determinant of a transpose equals the determinant of the original matrix,
+|A|=|A^(T)|, 	
+(25)
+
+and the determinant of a complex conjugate is equal to the complex conjugate of the determinant
+|A^_|=|A|^_. 	
+(26)
+
+Let epsilon be a small number. Then
+|I+epsilonA|=1+epsilonTr(A)+O(epsilon^2), 	
+(27)
+
+where Tr(A) is the matrix trace of A. The determinant takes on a particularly simple form for a triangular matrix
+|a_(11) a_(21) ... a_(k1); 0 a_(22) ... a_(k2); | | ... |; 0 0 ... a_(kk)|=product_(n=1)^ka_(nn). 	
+(28)
+
+Important properties of the determinant include the following, which include invariance under elementary row and column operations.
+
+1. Switching two rows or columns changes the sign.
+
+2. Scalars can be factored out from rows and columns.
+
+3. Multiples of rows and columns can be added together without changing the determinant's value.
+
+4. Scalar multiplication of a row by a constant c multiplies the determinant by c.
+
+5. A determinant with a row or column of zeros has value 0.
+
+6. Any determinant with two rows or columns equal has value 0.
+
+Property 1 can be established by induction. For a 2×2 matrix, the determinant is
+|a_1 b_1; a_2 b_2|	=	a_1b_2-b_1a_2	
+(29)
+	=	-(b_1a_2-a_1b_2)	
+(30)
+	=	-|b_1 a_1; b_2 a_2|	
+(31)
+
+For a 3×3 matrix, the determinant is
+|a_1 b_1 c_1; a_2 b_2 c_2; a_3 b_3 c_3|=a_1|b_2 c_2; b_3 c_3|-b_1|a_2 c_2; a_3 c_3|+c_1|a_2 b_2; a_3 b_3| =-(a_1|c_2 b_2; c_3 b_3|+b_1|a_2 c_2; a_3 c_3|-c_1|a_2 b_2; a_3 b_3|)=-|a_1 c_1 b_1; a_2 c_2 b_2; a_3 c_3 b_3| =-(-a_1|b_2 c_2; b_3 c_3|+b_1|a_2 c_2; a_3 c_3|+c_1|b_2 a_2; b_3 a_3|)=-|b_1 a_1 c_1; b_2 a_2 c_2; b_3 a_3 c_3| =-(a_1|c_2 b_2; c_3 b_3|-b_1|c_2 a_2; c_3 a_3|+c_1|b_2 a_2; b_3 a_3|)=-|c_1 b_1 a_1; c_2 b_2 a_2; c_3 b_3 a_3|. 	
+(32)
+
+Property 2 follows likewise. For 2×2 and 3×3 matrices,
+|ka_1 b_1; ka_2 b_2|	=	k(a_1b_2)-k(b_1a_2)	
+(33)
+	=	k|a_1 b_1; a_2 b_2|	
+(34)
+
+and
+|ka_1 b_1 c_1; ka_2 b_2 c_2; ka_3 b_3 c_3|	=	ka_1|b_2 c_2; b_3 c_3|-b_1|ka_2 c_2; ka_3 c_3|+c_1|ka_2 b_2; ka_3 b_3|	
+(35)
+	=	k|a_1 b_1 c_1; a_2 b_2 c_2; a_3 b_3 c_3|.	
+(36)
+
+Property 3 follows from the identity
+|a_1+kb_1 b_1 c_1; a_2+kb_2 b_2 c_2; a_3+kb_3 b_3 c_3|=(a_1+kb_1)|b_2 c_2; b_3 c_3|-b_1|a_2+kb_2 c_2; a_3+kb_3 c_3|+c_1|a_2+kb_2 b_2; a_3+kb_3 b_3|. 	
+(37)
+
+If a_(ij) is an n×n matrix with a_(ij) real numbers, then det[a_(ij)] has the interpretation as the oriented n-dimensional content of the parallelepiped spanned by the column vectors [a_(i,1)], ..., [a_(i,n)] in R^n. Here, "oriented" means that, up to a change of + or - sign, the number is the n-dimensional content, but the sign depends on the "orientation" of the column vectors involved. If they agree with the standard orientation, there is a + sign; if not, there is a - sign. The parallelepiped spanned by the n-dimensional vectors v_1 through v_i is the collection of points
+t_1v_1+...+t_iv_i, 	
+(38)
+
+where t_j is a real number in the closed interval [0,1].
+
+Several accounts state that Lewis Carroll (Charles Dodgson) sent Queen Victoria a copy of one of his mathematical works, in one account, An Elementary Treatise on Determinants. Heath (1974) states, "A well-known story tells how Queen Victoria, charmed by Alice in Wonderland, expressed a desire to receive the author's next work, and was presented, in due course, with a loyally inscribed copy of An Elementary Treatise on Determinants," while Gattegno (1974) asserts "Queen Victoria, having enjoyed Alice so much, made known her wish to receive the author's other books, and was sent one of Dodgson's mathematical works." However, in Symbolic Logic (1896), Carroll stated, "I take this opportunity of giving what publicity I can to my contradiction of a silly story, which has been going the round of the papers, about my having presented certain books to Her Majesty the Queen. It is so constantly repeated, and is such absolute fiction, that I think it worth while to state, once for all, that it is utterly false in every particular: nothing even resembling it has occurred" (Mikkelson and Mikkelson).
+DetComplexMatrix
+
+Hadamard (1893) showed that the absolute value of the determinant of a complex n×n matrix with entries in the unit disk satisfies
+|detA|<=n^(n/2) 	
+(39)
+
+(Brenner 1972). The plots above show the distribution of determinants for random n×n complex matrices with entries satisfying |a_(ij)|<1 for n=2, 3, and 4. 
+标准CMOS
+（Standard CMOS Setup)
+BIOS出厂默认值设置
+BIOS出厂默认值设置
+从主菜单选择“STANDARD CMOS SETUP”后进入“标准CMOS设置”菜单。
+Date/Time:日期和时间的设置，我们可以用光标配合“Page Up”和“Page Down”依次设置成当前日期和时间。
+Floppy Drive A，B: 设定软盘驱动器类型为None/720K/1.2M/1.44M/2.88M。
+HDD Type（硬盘类型）： Auto（自动检测）、SCSI(SCSI HDD）、CD－ROM驱动器、Floptical(LS－120大容量软驱）或是Type 1～47等IDE设备。
+LBA/Large:硬盘LBA/Large模式是否打开。540M以上的硬盘都要将此选项打开（On），但在Novell Netware 3.xx或4.xx版等网络操作系统下要视情况将它关掉（Off）。
+Block Mode: 将此选项设为On，有助于硬盘存取速度加快，但有些旧硬盘不支持此模式，必须将此选项设为Off。
+32 Bit Mode: 将此选项设为On，有助于在32位的操作系统（如WIN95/NT）下加快硬盘传输速度，有些旧硬盘不支持此模式，必须将此选项设为Off。
+PIO Mode: 支持PIO Mode0～Mode5(DMA/33）。用BIOS程序自动检查硬盘时，会自动设置硬盘的PIO Mode。
+注意：当你在系统中接上一台IDE设备（如硬盘、光驱等）时，最好进入BIOS，让它自动检测。如果使用的是抽屉式硬盘的话，可将Type设成Auto，或将Primary以及Secondary的Type都改成Auto 即可。所谓Primary指的是第一IDE接口，对应于主板上的IDE0插口，Secondary指的是第二IDE接口，对应于主板上的IDE1插口。每个IDE接口可接Master/Slave（主/从）两台IDE设备。
+高级设定
+（Advanced Setup）
+BIOS启动项设置
+BIOS启动项设置
+1st/2rd/3rd/4th Boot Device: 开机启动设备的顺序，可选择由IDE0～3、SCSI、光驱、软驱、 Floptical (LS－120大容量软驱）或由Network（网络）开机。
+S.M.A.R.TFor HardDisk: 开启（Enable）硬盘S.M.A.R.T功能。如果硬盘支持，此功能可提供硬盘自我监控的功能。
+Quick Boot: 开启此功能后，可使开机速度加快。
+Floppy Drive Swap: 若将此功能Enable，可使A驱与B驱互换。
+PS/2 Mouse Support : 是否开启PS/2鼠标口，若设定为Enable，则开机时，将IRQ12保留给PS/2鼠标使用，若设定为Disable，则IRQ12留给系统使用。
+Password Check: 设定何时检查Password（口令），若设定成Setup时，每次进入BIOS设定时将会要求输入口令，若设定成Always时，进入BIOS或系统开机时，都会要求输入口令，但先决条件是必须先设定口令（Security窗口中的User选项）。
+Primary Display: 设定显示卡的种类。
+Internal Cache: 是否开启CPU内部高速缓存（L1 Cache），应设为Enable。
+External Cache: 是否开启主板上的高速缓存（L2 Cache），应设为Enable。
+System BIOS Cacheable: 是否将系统BIOS程序复制到内存中，以加快BIOS存取速度。
+C000－DC00，16K Shadow: 此8项是将主内存的UpperMemory（上位内存区）开启，将所有插卡上ROM程序映射到内存中，以加快CPU对BIOS的执行效率。Disable：不开启本功能；Enable：开启，且可提供读写区段功能；Cached：开启，但不提供读写功能。
+属性设置
+（BIOS FEATURES SETUP)
+从主菜单上选择“BIOS FEATURES SETUP”即进入“BIOS属性设置”菜单。此设置中第1项“Virus Warning/病毒防范”除了在安装操作系统如DOS6?xx和Windows9x/200 0/NT等的过程中须设置为“Disabled”外，其余时间应该都设为“Enabled”。
+第2、3、4和5项是涉及CPU的。其中“CPU Internal Cache/CPU内部缓存”、“External Cache/外部缓存”用来管理CPU的L1 Cache和L2 Cache。如果使用赛扬（主频为2.66Ghz和300Mhz的除外）、PentiumⅡ和PentiumⅢ可全部设为Enabled。第4项“CPU L2 Cache ECC Checking/CPU二级缓存ECC校验”一般情况下设为Enabled，但使用PentiumⅡ233 、PentiumⅢ266时可设为Disabled，因为这两种CPU的L2 Cache不具备ECC校验功能，设为Enable d时反而会降低系统启动速度。第5项“Processor number feature/处理器序列号功能”用于控制早已闹得沸沸扬扬的PentiumⅢ编号（ID），中国有关部门要求设为“Disabled”。但笔者曾试过，好像Intel出口到中国的“铜矿”PentiumⅢ已经在CPU中关闭了ID，此项设置毫无作用。
+另外一些是关于系统启动时的设置，其中“快速自检/Quick power on self test”可设为“Enabled”，这样系统在启动时只对内存检验一遍，而设为“Disabled”时则在启动时将对内存检验三遍，自然要慢些；至于“CPU升级日志/CPU Update Data”则按BIOS推荐值设为“Enabled”，“优先网络启动/Boot From LAN First”项用于“网卡”等启动优先设置，除联网使用外一般都设为“Disabled”；“系统引导顺序/Boot Sequence” 就是经常提到的从C盘或A盘启动设置，其中的设置选择较多，有光驱、“D：”等优先启动设置等，比较简明。注意其中从“D”盘启动是指物理D盘（即所使用的第二块硬盘）而不是逻辑D：盘。
+“软驱盘符交换/Swap Floppy Drive”用于交换两块软驱的“A：”、“B：”盘符，即如果有两块软驱可以通过此项设置将事实上的“A：”改为“B：”驱等；“引导显示卡/VGA Boot From”用于设置电脑在使用双显示卡时以PCI还是AGP显卡作为启动时（即显示）的主卡，此项设置根据用户自己使用的显卡总线类型而定，另外这项在给BIOS失效的显卡重写BIOS时也有用，例如在为BIOS失效的AGP卡重装BIOS时，可另插PCI 显卡引导系统进行操作。
+“引导时检查软驱/Boot Up Floppy Seek”意义明确，用户可根据自己需要分别设为“Enabled”或“Disabled”，但设为“Enabled”时，启动时软驱“吱吱”作响挺烦的。
+“启动时副键盘状态/Boot Up NumLock Stating”决定启动数字小键盘状态，设为“ON”时为数字输入有效（键盘上NumLock灯亮），反之则为无效状态；“Typematic Rate Sett ing”、“Typematic Rate（Chars/Sec）”和“Typematic Delay(Msec) ”三项用于调整键盘录入速度，意义不大。
+“密码使用选择/Security Option”设置有“System”和“Setup”分别是确定密码是每次启动系统（包括热启动）时都用还是仅在进入BIOS设置时才用。
+“显示校正/PCI-VGA Palette Snoop”是在ISA和PCI总线上分别使用两块显示板卡（如增加了VCD/DVD解压卡）时出现色彩不正常时可设为“Enabled”试试，一般都应设为“Disabled”。“Assign IRQ For VGA”则是设置由系统自动为显示卡配置中断（IRQ），目的是在系统中安装有I SA接口的解压卡等时使用，通常应该设为“Disabled”。
+“OS Select For DRAM>64MB”这项只在电脑安装使用“OS/2”操作系统时才用，因为大多数用户的电脑中多安装Win XP/7/8之类，所以应该设为“No-OS/2”。
+“HDD S.M.A.R.T capability”用于开启硬盘的“故障自监测报告”功能，如果你的硬盘具备这一保护功能请设为“Enabled”，如果不具备这一功能，打开此开关也不影响系统正常运行。
+“Report No FDD For WIN95”的意思是在系统启动时报告win9x没有硬盘，用户系统一般是2X以上，强烈建议设置为Disable。
+最后一项“Video BIOS Shadow”用于启动后将显示卡的BIOS程序映射在内存中（开辟保留区）中，这样从理论上可以提高电脑显示速度，所以可以设为“Enabled”。
+芯片组功能
+（CHIPSET FEATURES SETUP)
+从主菜单上选择“CHIPSET FEATURES SETUP”进入芯片组功能设置。此项设置中的具体内容因主板而异，但基本上都包括对系统硬件状态监测、CPU超温保护设置和对内存、显存状态设置等。本功能中的选项有助于系统效率的提升，建议使用默认值。若将某些Chipset、DRAM/SDRAM或SRAM部分的Timing值设得过快，可能会导致系统"死机"或运行不稳定，这时可试着将某些选项的速度值设定慢一点。　 “Reset Case Open Status”和“Case Opened”项用于设置电脑机箱（开启）状态监测和报警，一般设为“No”。
+“Slow Down CPU Duty Cycle”用于选择CPU降速运行比例，可分别选择“Norma l”或“79%”及其它百分比。
+“Shutdown Temp?（℃/?）”用于设置系统温度过高时自动关机初始值，同时用摄氏或华氏温度表示。
+“***Temp? Select（℃/?）**”项为选择保护启动温度初始值，同样使用摄氏和华氏温度表示，此处仅对CPU进行设置。
+“**Temperature Alarm**”用于设置CPU过温报警，应该设为“Yes”；然后就是系统对硬件监测所采集的数据，其中有“CPU”风扇、“Power/电源”和“Panel/板”风扇的运行状态，如果是使用非原装风扇，由于没有测速功能，系统将会认为CPU风扇故障而报警，所以此时应该将其设为“No”，其它风扇报警功能也应该予以设为“No”，对于系统监测显示的CPU电压和温度等状态参数用户只能看不能修改，但对于具备超频设置功能的BIOS中将包括对CPU的内核工作电压和I/O电压的微调，这部分内容须根据具体主板BIOS内容进行设置。
+其次是对内存的运行速度进行设置，“SDRAM CAS latency Time”项设为“Auto”是使系统启动时自动检测内存，然后根据内存“SPD”中的参数进行设置，这样系统工作时不会因人为设置内存运行速度过高而出错。不过如果你买的是假内存（假SPD），那么系统运行时可就要给你闹别扭了。另外也可以按具体值分别设为“2”或 “3”等，视内存质量而定，数值越小时内存运行速度越快。
+“DRAM Data Integrity Mode”则用于设置内存校验，由于多数用户使用的都是不具备ECC校验功能的SDRAM，所以这项自动设为“No-ECC”。注意：若系统使用SDRAM不稳时，建议将SDRAM速度调慢。
+对于“System BIOS Cacheable”和“Video BIOS Cacheable”两项的设置是允许将主板BIOS和VGABIOS映射在高速缓存或内存中，理论是可以提高运行速度，但部分电脑使用时可能有问题，所以应根据试验后设置为“Enabled”，否则设为“Disabled”，使BIOS仅映射在内存中较为妥当。
+“16 Bit I/O Recovery Time”项是输入/输出16位数据的器件传输复位速度，一般可分别设为“1”至“4”等，通常数值小、速度快。
+“Memory Hole At15M-16M”是为ISA设备保留15～16M之间的内存而设的，一般设为 “Disabled”。如果你的Windows启动后少了1MB内存（通过控制板中系统属性查看），那么不妨检查一下是不是这项设成了“Enabled”。
+“Delayed Transaction”是为解决PCI2?1总线的兼容问题而设，理论上设为“Enab led”可使用PCI21标准卡，但如设为“Enabled”可能会出现PCI2?1设备与普通PCI和ISA设备之间的兼容问题，所以一般推荐设成“Disabled”。
+“Clock Spread Spectrum”项是为了抑制时钟频率辐射干扰，但需要硬件（主板）支持，所以可根据实际情况设为“Enabled”或“Disabled”。
+USB Function Enabled: 此选项可开启USB接口的功能，如没有USB设备，建议将此选项设为Disable，否则会浪费一个IRQ资源。
+Passive Release: 设定Passive Release（被动释放）为Enable时，可确保CPU与PCI总线主控芯片（PCI Bus Master）能随时重获对总线的控制权。
+电源管理
+（POWER MANAGEMET SETUP)
+在主菜单上选择“POWER MANAGEMMET SETUP”后进入“能源管理设置”菜单。
+能源管理功能可使大部份周边设备在闲置时进入省电功能模示，减少耗电量，达到节约能源的目的。电脑在平常操作时，是工作在全速模式状态，而电源管理程序会监视系统的图形、串并口、硬盘的存取、键盘、鼠标及其他设备的工作状态，如果上述设备都处于停顿状态，则系统就会进入省电模式，当有任何监控事件发生，系统即刻回到全速工作模式的状态。省电模式又分为“全速模式（Normal）、打盹模式（Doze）、待命模式（Standby）、沉睡模式（Suspend)"，系统耗电量大小顺序：Normal>Doze> Standby > Suspend。
+Power Management/APM: 是否开启APM省电功能。“Disabled”和“Enabled”，若开启（Enable），则可设定省电功能。“PM Control by APM”的意思是将能源管理交给系统（指WIN9x）的 APM（“高级能源管理”的英文缩写），可根据用户意愿分别设为“Yes”或“No”，但交予系统管理要更好些。
+Green PC Monitor Power State/Video Power Down Mode/Hard Disk Power Down Mode : 设定显示器、显示卡以及硬盘是否开启省电模式，可设定成Standby、Suspend以及Off（即不进入省电模式）。
+"Video off Method”项用于控制显示器，有“DPMS/显示能源管理系统”、“亮度关闭/B lank Screen”、“关亮度并切断同步信号/V/H SYNC+Blank Screen”等三种模式可选，但其中“DPMS”节能效果最好，为推荐设置，但需符合DPMS规范的显示器和显卡支持，如果设备不符合DPMS，可再试设置成另两项。
+Video Power Down Mode: 设定显示器在省电模式下的状态 :Disable: 不设定 ；Stand By: 待命模式；Suspend: 沉睡模式。
+Hard Disk Power Down Mode: 设定硬盘在省电模式下的状态。（同上）
+“Suspend Mode”是休眠时间设置，可将时间设在1分至1小时之间，意思是超过所设时间后系统自动进入休眠状态。如果电脑中装有CD-R/W刻录机进行刻盘时最好将设为“Disabled”，以关闭休眠功能提高刻盘成功率。
+“HDD Power Down”项设置硬盘自动停转时间，可设置在1至15分钟之间，或设为“Disabled”关闭硬盘自动停转。
+Standby Timeout/Suspend Timeout: 本选项可设定系统在闲置几分钟后，依序进入Standby/Mode/Suspend Mode等省电模式。
+VGA Active Monitor”项用于设置显示器亮度激活方式，可设为“Disabled”和“Enabled”两种。
+“Soft-off by PWR-BTTN”项确定关机模式，设为“Instant-Off”，关机时用户按下电源开关，则立刻切断电源，设为“Delay4Secs”时，则在按下电源开关4秒钟后才切断电源，如果按下开关时间不足4秒，则自动进入休眠模式，所以一般按习惯设为“Instant-Off”。
+“Power LED In Suspend”项设置机箱电源指示灯在系统休眠时的状态，可设为“闪动/Bl anking”、“亮/On”和“Off/Dual”等，通常按习惯设为“Blanking”使电脑在休眠时电源灯闪烁提醒用户注意。
+“System After AC Back”项设置电脑在交流电断电后又恢复时的状态，可设为“断电/So ft-off”、“开机/Full On”、“Memory By S/W”和“Memory By H/W”三项，按国内使用情况一般都设为停电后再恢复供电时电脑不自动开机，即设为“断电/Soft-off”。
+“CPUFAN off In suspend”项是设置CPU风扇在系统休眠时自动停转，可根据自己的风扇（只对原配或带测速功能的风扇有效）设为“Disabled”或“Enabled”。
+“PME Event Wakeup”一项不详，先按缺省设置为“Disabled”。
+“ModemRingOn/WakeOnlan”用于通过网络或Modem实现远程叫醒开机的设置，只要你不使用这些功能，就都可设为“Disabled”，如果需要再设为“Enabled”。
+“Resume by Alarm”项用于定时开机，设置的时间可定在每月某日（00～31）某时某分某秒（ 00～23：00～59：00～59），但需要主板和其它硬件支持。
+“能源管理设置”中还有“**Reload Global Timer Events**”项，这部分意思大致是对其中所列设备和网络设备以及部分系统资源（IRQ）对系统的激活是否对进入节能状态时间重新计时。
